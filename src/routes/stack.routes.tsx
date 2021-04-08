@@ -3,10 +3,13 @@ import React, {useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import {ActivityIndicator, View} from 'react-native';
+import {View} from 'react-native';
 
 import {AuthContext} from '../components/Context/index';
+
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
+import LottieView from 'lottie-react-native';
 
 import HomeScreen from '../pages/HomeScreen';
 import SignInScreen from '../pages/SignInScreen';
@@ -126,13 +129,18 @@ function StackNavigatorRoutes() {
       }
       // console.log('user token', userToken);
       dispatch({type: 'RETRIEVE_TOKEN', token: userToken, isLoading: false});
-    }, 1000);
+    }, 3500);
   }, []);
 
   if (loginState.isLoading) {
     return (
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <ActivityIndicator size="large" color="#232323" />
+        {/* <ActivityIndicator size="large" color="#232323" /> */}
+        <LottieView
+          source={require('../assets/eccomerce.json')}
+          autoPlay
+          loop
+        />
       </View>
     );
   }
@@ -141,7 +149,6 @@ function StackNavigatorRoutes() {
     <AuthContext.Provider value={authContext}>
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="Home"
           screenOptions={{
             headerShown: false,
           }}>
