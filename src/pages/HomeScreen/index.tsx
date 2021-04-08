@@ -1,4 +1,5 @@
 import React from 'react';
+import {useNavigation} from '@react-navigation/core';
 import {
   View,
   Text,
@@ -25,6 +26,8 @@ interface IProductDTO {
 const HomeScreen = () => {
   const layoutWidth = '70%';
 
+  const navigation = useNavigation();
+
   function Header() {
     return (
       <View
@@ -43,7 +46,7 @@ const HomeScreen = () => {
           </TouchableOpacity>
         </View>
         <View style={{flex: 1, alignItems: 'center'}}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
             <Icon name="shopping" size={20} color="#ddd" />
           </TouchableOpacity>
         </View>
@@ -85,7 +88,7 @@ const HomeScreen = () => {
       <View
         style={{
           flex: 1,
-          backgroundColor: '#f53b50',
+          backgroundColor: '#232323',
           width: layoutWidth,
         }}
       />

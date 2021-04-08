@@ -39,14 +39,14 @@ const transition = (
 
 const CardProduct = ({item}: IProductDTO) => {
   const [colorAddButton, setColorAddButton] = useState('white');
-  const [colorAddIcon, setColorAddIcon] = useState('#f53b50');
+  const [colorAddIcon, setColorAddIcon] = useState('#232323');
   const [currentIdItem, setCurrentIdItem] = useState<number | null>(null);
 
   const ref = React.useRef<TransitioningView | null>(null);
 
   function HandlePress() {
     console.log('ADICIONAR');
-    setColorAddButton('#f53b50');
+    setColorAddButton('#232323');
     setColorAddIcon('white');
   }
   return (
@@ -159,6 +159,6 @@ const styles = createStyles({
     textAlign: 'right',
     fontFamily: 'Roboto-Bold',
     fontSize: '1.2rem',
-    color: '#f53b50',
+    color: '#232323',
   },
 });

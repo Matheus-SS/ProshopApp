@@ -7,16 +7,16 @@ import {
   StatusBar,
   KeyboardAvoidingView,
   Platform,
+  ScrollView,
 } from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import {ScrollView} from 'react-native-gesture-handler';
+// import {useNavigation} from '@react-navigation/core';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {createStyles} from '../../../styles';
 
 const SignInScreen = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
-  const navigation = useNavigation();
+  //const navigation = useNavigation();
 
   const passowordRef = useRef<TextInput>(null);
 
@@ -113,8 +113,7 @@ const SignInScreen = () => {
   function renderResetPasswordButton() {
     return (
       <View style={{marginTop: 20, flexDirection: 'row', width: '100%'}}>
-        <TouchableOpacity
-          onPress={() => navigation.navigate('ForgotPasswordScreen')}>
+        <TouchableOpacity onPress={() => console.log('l')}>
           <Text style={styles.resetPasswordButtonText}>Forgot password?</Text>
         </TouchableOpacity>
       </View>
