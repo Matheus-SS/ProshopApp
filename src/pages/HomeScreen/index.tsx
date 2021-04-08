@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {useNavigation} from '@react-navigation/core';
 import {
   View,
@@ -12,6 +12,7 @@ import {createStyles} from '../../../styles/index';
 import {products} from '../../../constants/products';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import CardProduct from '../../components/CardProducts';
+import {AuthContext} from '../../components/Context';
 
 interface IProductDTO {
   item: {
@@ -25,7 +26,7 @@ interface IProductDTO {
 }
 const HomeScreen = () => {
   const layoutWidth = '70%';
-
+  const {signOut} = useContext(AuthContext);
   const navigation = useNavigation();
 
   function Header() {
@@ -41,7 +42,7 @@ const HomeScreen = () => {
             paddingLeft: 40,
             paddingVertical: 15,
           }}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => signOut()}>
             <Icon name="arrow-left" size={20} color="#fff" />
           </TouchableOpacity>
         </View>

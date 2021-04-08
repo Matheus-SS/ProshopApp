@@ -57,7 +57,6 @@ const CardProduct = ({item}: IProductDTO) => {
       }}>
       <TouchableWithoutFeedback
         onPress={() => {
-          console.log(ref.current);
           ref.current?.animateNextTransition();
           setCurrentIdItem(item.id === currentIdItem ? null : item.id);
         }}>

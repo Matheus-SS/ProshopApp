@@ -13,15 +13,21 @@ import {
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {createStyles} from '../../../styles';
 
+import {AuthContext} from '../../components/Context';
+
 const SignInScreen = () => {
-  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [showPassword, setShowPassword] = useState<boolean>(true);
+
+  const [userName, setUserName] = useState('');
+  const [password, setPassword] = useState('');
 
   //const navigation = useNavigation();
-
   const passowordRef = useRef<TextInput>(null);
 
+  const {signIn} = React.useContext(AuthContext);
+
   const handleSubmit = () => {
-    console.log('LOGIN');
+    signIn(userName, password);
   };
   function title() {
     return (
@@ -44,6 +50,7 @@ const SignInScreen = () => {
               height: 40,
               color: '#fff',
             }}
+            onChangeText={(value) => setUserName(value)}
             returnKeyType="next"
             onSubmitEditing={() => passowordRef.current?.focus()}
             autoCapitalize="none"
@@ -67,6 +74,7 @@ const SignInScreen = () => {
             autoCapitalize="none"
             placeholder="Password"
             textContentType="password"
+            onChangeText={(value) => setPassword(value)}
             placeholderTextColor="#fff"
             secureTextEntry={showPassword}
             onSubmitEditing={handleSubmit}
@@ -103,7 +111,9 @@ const SignInScreen = () => {
             alignItems: 'center',
             flex: 1,
           }}
-          onPress={handleSubmit}>
+          onPress={() => {
+            handleSubmit();
+          }}>
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
       </View>
