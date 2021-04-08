@@ -6,11 +6,11 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 EStyleSheet.build();
 
 // import HomeScreen from './src/pages/HomeScreen';
-import SignIn from './src/pages/SignIn';
+import SignInScreen from './src/pages/SignInScreen';
 const App = () => {
   return (
     <SafeAreaView style={{flex: 1}}>
-      <SignIn />
+      <SignInScreen />
     </SafeAreaView>
   );
 };

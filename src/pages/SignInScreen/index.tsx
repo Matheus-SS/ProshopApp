@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {
   Text,
   View,
@@ -8,12 +8,21 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 import {ScrollView} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {createStyles} from '../../../styles';
 
-const SignIn = () => {
+const SignInScreen = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
+
+  const navigation = useNavigation();
+
+  const passowordRef = useRef<TextInput>(null);
+
+  const handleSubmit = () => {
+    console.log('LOGIN');
+  };
   function title() {
     return (
       <View>
@@ -35,6 +44,8 @@ const SignIn = () => {
               height: 40,
               color: '#fff',
             }}
+            returnKeyType="next"
+            onSubmitEditing={() => passowordRef.current?.focus()}
             autoCapitalize="none"
             placeholder="Email"
             textContentType="emailAddress"
@@ -51,11 +62,14 @@ const SignIn = () => {
               height: 40,
               color: '#fff',
             }}
+            ref={passowordRef}
+            returnKeyType="send"
             autoCapitalize="none"
             placeholder="Password"
             textContentType="password"
             placeholderTextColor="#fff"
             secureTextEntry={showPassword}
+            onSubmitEditing={handleSubmit}
           />
 
           <TouchableOpacity
@@ -88,7 +102,8 @@ const SignIn = () => {
             justifyContent: 'center',
             alignItems: 'center',
             flex: 1,
-          }}>
+          }}
+          onPress={handleSubmit}>
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
       </View>
@@ -98,7 +113,8 @@ const SignIn = () => {
   function renderResetPasswordButton() {
     return (
       <View style={{marginTop: 20, flexDirection: 'row', width: '100%'}}>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('ForgotPasswordScreen')}>
           <Text style={styles.resetPasswordButtonText}>Forgot password?</Text>
         </TouchableOpacity>
       </View>
@@ -151,4 +167,4 @@ const styles = createStyles({
   },
 });
 
-export default SignIn;
+export default SignInScreen;
