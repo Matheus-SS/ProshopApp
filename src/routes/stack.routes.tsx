@@ -13,6 +13,8 @@ import LottieView from 'lottie-react-native';
 
 import HomeScreen from '../pages/HomeScreen';
 import SignInScreen from '../pages/SignInScreen';
+
+import AuthRoutes from '../routes/auth.routes';
 import CartScreen from '../pages/CartScreen';
 
 type InitalStateType = {
@@ -31,7 +33,7 @@ const Stack = createStackNavigator();
 
 function StackNavigatorRoutes() {
   // const [isLoading, setIsLoading] = React.useState(true);
-  // const [userToken, setUserToken] = React.useState<string | null>(null);
+  const [user, setUser] = React.useState<string | null>(null);
 
   const initialLoginState: InitalStateType = {
     isLoading: true,
@@ -92,6 +94,7 @@ function StackNavigatorRoutes() {
           try {
             userToken = 'TOKEN';
             await AsyncStorage.setItem('@Proshop-Token', userToken);
+            setUser(userToken);
           } catch (error) {
             console.log(error);
           }
@@ -114,8 +117,9 @@ function StackNavigatorRoutes() {
         // setUserToken('TOKEN');
         // setIsLoading(false);
       },
+      user: user,
     }),
-    [],
+    [user],
   );
 
   useEffect(() => {
@@ -124,13 +128,14 @@ function StackNavigatorRoutes() {
       let userToken = null;
       try {
         userToken = await AsyncStorage.getItem('@Proshop-Token');
+        setUser(userToken);
       } catch (error) {
         console.log(error);
       }
       // console.log('user token', userToken);
       dispatch({type: 'RETRIEVE_TOKEN', token: userToken, isLoading: false});
     }, 3500);
-  }, []);
+  }, [loginState]);
 
   if (loginState.isLoading) {
     return (
@@ -148,21 +153,20 @@ function StackNavigatorRoutes() {
   return (
     <AuthContext.Provider value={authContext}>
       <NavigationContainer>
-        <Stack.Navigator
-          screenOptions={{
-            headerShown: false,
-          }}>
-          {loginState.userToken !== null ? (
-            <>
-              <Stack.Screen name="Home" component={HomeScreen} />
-              <Stack.Screen name="Cart" component={CartScreen} />
-            </>
-          ) : (
-            <>
-              <Stack.Screen name="SingIn" component={SignInScreen} />
-            </>
-          )}
-        </Stack.Navigator>
+        {loginState.userToken !== null ? (
+          <AuthRoutes />
+        ) : (
+          <Stack.Navigator
+            initialRouteName="Home"
+            screenOptions={{
+              headerShown: false,
+            }}>
+            <Stack.Screen name="Home" component={HomeScreen} />
+            <Stack.Screen name="SignIn" component={SignInScreen} />
+            {/* we need the screen cart here to be able to call the function navigateToCart inside Homescreen  */}
+            <Stack.Screen name="Cart" component={CartScreen} />
+          </Stack.Navigator>
+        )}
       </NavigationContainer>
     </AuthContext.Provider>
   );

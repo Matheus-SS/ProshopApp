@@ -27,6 +27,7 @@ const SignInScreen = () => {
   const {signIn} = React.useContext(AuthContext);
 
   const handleSubmit = () => {
+    console.log(userName, password);
     signIn(userName, password);
   };
   function title() {

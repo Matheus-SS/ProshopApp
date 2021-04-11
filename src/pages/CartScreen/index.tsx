@@ -1,11 +1,14 @@
 import React from 'react';
 import {Text, View} from 'react-native';
+import Authentication from '../../components/AuthenticationComponent';
 
 const CartScreen = () => {
   return (
-    <View>
-      <Text>CART SCREEN</Text>
-    </View>
+    <Authentication>
+      <View>
+        <Text>CART SCREEN</Text>
+      </View>
+    </Authentication>
   );
 };
 

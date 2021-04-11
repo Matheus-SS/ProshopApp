@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useCallback, useContext} from 'react';
 import {useNavigation} from '@react-navigation/core';
 import {
   View,
@@ -27,7 +27,12 @@ interface IProductDTO {
 const HomeScreen = () => {
   const layoutWidth = '70%';
   const {signOut} = useContext(AuthContext);
+
   const navigation = useNavigation();
+
+  const navigateToCart = useCallback(() => {
+    navigation.navigate('Cart');
+  }, [navigation]);
 
   function Header() {
     return (
@@ -47,7 +52,7 @@ const HomeScreen = () => {
           </TouchableOpacity>
         </View>
         <View style={{flex: 1, alignItems: 'center'}}>
-          <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
+          <TouchableOpacity onPress={navigateToCart}>
             <Icon name="shopping" size={20} color="#ddd" />
           </TouchableOpacity>
         </View>
