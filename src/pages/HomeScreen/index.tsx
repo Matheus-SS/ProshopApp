@@ -1,5 +1,7 @@
 import React, {useCallback, useContext} from 'react';
 import {useNavigation} from '@react-navigation/core';
+import {DrawerNavigationProp} from '@react-navigation/drawer';
+
 import {
   View,
   Text,
@@ -12,7 +14,6 @@ import {createStyles} from '../../../styles/index';
 import {products} from '../../../constants/products';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import CardProduct from '../../components/CardProducts';
-import {AuthContext} from '../../components/Context';
 
 interface IProductDTO {
   item: {
@@ -24,11 +25,13 @@ interface IProductDTO {
     rating: number;
   };
 }
-const HomeScreen = () => {
-  const layoutWidth = '70%';
-  const {signOut} = useContext(AuthContext);
 
-  const navigation = useNavigation();
+interface IHomeProps {
+  navigation: DrawerNavigationProp<any, any>;
+}
+
+const HomeScreen = ({navigation}: IHomeProps) => {
+  const layoutWidth = '70%';
 
   const navigateToCart = useCallback(() => {
     navigation.navigate('Cart');
@@ -47,8 +50,8 @@ const HomeScreen = () => {
             paddingLeft: 40,
             paddingVertical: 15,
           }}>
-          <TouchableOpacity onPress={() => signOut()}>
-            <Icon name="arrow-left" size={20} color="#fff" />
+          <TouchableOpacity onPress={() => navigation.openDrawer()}>
+            <Icon name="menu" size={20} color="#fff" />
           </TouchableOpacity>
         </View>
         <View style={{flex: 1, alignItems: 'center'}}>

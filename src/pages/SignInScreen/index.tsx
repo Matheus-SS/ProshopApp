@@ -4,7 +4,6 @@ import {
   View,
   TextInput,
   TouchableOpacity,
-  StatusBar,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
@@ -26,9 +25,8 @@ const SignInScreen = () => {
 
   const {signIn} = React.useContext(AuthContext);
 
-  const handleSubmit = () => {
-    console.log(userName, password);
-    signIn(userName, password);
+  const handleSubmit = (username: string, passWord: string) => {
+    signIn(username, passWord);
   };
   function title() {
     return (
@@ -78,7 +76,7 @@ const SignInScreen = () => {
             onChangeText={(value) => setPassword(value)}
             placeholderTextColor="#fff"
             secureTextEntry={showPassword}
-            onSubmitEditing={handleSubmit}
+            onSubmitEditing={() => handleSubmit(userName, password)}
           />
 
           <TouchableOpacity
@@ -112,9 +110,7 @@ const SignInScreen = () => {
             alignItems: 'center',
             flex: 1,
           }}
-          onPress={() => {
-            handleSubmit();
-          }}>
+          onPress={() => handleSubmit(userName, password)}>
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
       </View>
@@ -134,8 +130,6 @@ const SignInScreen = () => {
     <KeyboardAvoidingView
       style={{flex: 1}}
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-      <StatusBar hidden />
-
       <View
         style={{
           flex: 1,

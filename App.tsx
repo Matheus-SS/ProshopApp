@@ -3,7 +3,7 @@ import React from 'react';
 import {SafeAreaView} from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 
-import Routes from './src/routes/stack.routes';
+import Routes from './src/routes/main.routes';
 
 EStyleSheet.build();
 
