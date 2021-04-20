@@ -1,5 +1,4 @@
-import React, {useCallback, useContext} from 'react';
-import {useNavigation} from '@react-navigation/core';
+import React, {useCallback} from 'react';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
 
 import {
@@ -23,6 +22,7 @@ interface IProductDTO {
     description: string;
     price: number;
     rating: number;
+    quantity: number;
   };
 }
 

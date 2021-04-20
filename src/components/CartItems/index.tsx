@@ -39,16 +39,12 @@ const transition = (
 );
 
 const CardProduct = ({item}: Omit<IProductDTO, 'quantity'>) => {
-  const [colorAddButton, setColorAddButton] = useState('white');
-  const [colorAddIcon, setColorAddIcon] = useState('#232323');
   const [currentIdItem, setCurrentIdItem] = useState<number | null>(null);
 
   const ref = React.useRef<TransitioningView | null>(null);
 
   function HandlePress() {
     console.log('ADICIONAR');
-    setColorAddButton('#232323');
-    setColorAddIcon('white');
   }
   return (
     <View
@@ -128,18 +124,32 @@ const CardProduct = ({item}: Omit<IProductDTO, 'quantity'>) => {
               <Text style={styles.price}>$ {item.price}</Text>
             </View>
           </View>
-
-          <TouchableOpacity
+          <View
             style={{
-              backgroundColor: colorAddButton,
-              padding: 4,
+              backgroundColor: '#fff',
               borderRadius: 20,
-              left: 15,
+              padding: 8,
               elevation: 5,
-            }}
-            onPress={HandlePress}>
-            <Icon name="plus" size={25} color={colorAddIcon} />
-          </TouchableOpacity>
+              left: 13,
+            }}>
+            <TouchableOpacity
+              style={{
+                borderRadius: 20,
+                padding: 4,
+              }}
+              onPress={HandlePress}>
+              <Icon name="minus" size={20} color="#000" />
+            </TouchableOpacity>
+            <Text style={styles.quantity}>{item.quantity}</Text>
+            <TouchableOpacity
+              style={{
+                borderRadius: 20,
+                padding: 4,
+              }}
+              onPress={HandlePress}>
+              <Icon name="plus" size={20} color="#000" />
+            </TouchableOpacity>
+          </View>
         </Transitioning.View>
       </TouchableWithoutFeedback>
     </View>
@@ -160,5 +170,13 @@ const styles = createStyles({
     fontFamily: 'Roboto-Bold',
     fontSize: '1.2rem',
     color: '#232323',
+  },
+  quantity: {
+    fontFamily: 'Roboto-Regular',
+    fontSize: '1.2rem',
+    color: '#232323',
+    textAlign: 'center',
+    paddingBottom: 3,
+    paddingTop: 3,
   },
 });

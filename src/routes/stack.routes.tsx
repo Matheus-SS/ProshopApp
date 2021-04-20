@@ -8,13 +8,13 @@ const Stack = createStackNavigator();
 
 const MainStackScreen = () => (
   <Stack.Navigator
-    initialRouteName="Home"
+    // initialRouteName="Home"
     screenOptions={{
       headerShown: false,
     }}>
-    <Stack.Screen name="Home" component={HomeScreen} />
+    {/* <Stack.Screen name="Home" component={HomeScreen} />
 
-    <Stack.Screen name="SignIn" component={SignInScreen} />
+    <Stack.Screen name="SignIn" component={SignInScreen} /> */}
     <Stack.Screen name="Cart" component={CartScreen} />
   </Stack.Navigator>
 );

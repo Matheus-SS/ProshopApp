@@ -11,6 +11,7 @@ export const products = [
       'é uma série de jogos de luta produzidos pela SNK. The King of Fighters começou por ser um crossover entre as séries Art of Fighting e Fatal Fury, além de personagens do jogos Ikari Warriors e Psycho Soldier',
     price: 30.0,
     rating: 4.2,
+    quantity: 3,
   },
   {
     id: 2,
@@ -20,6 +21,7 @@ export const products = [
       'é um romance da web sul-coreano escrito por Chugong. Foi serializado na plataforma digital de quadrinhos e ficção KakaoPage da Kakao desde 25 de julho de 2016, e posteriormente publicado pela D&C Media sob seu selo Papyrus desde 4 de novembro de 2016.',
     price: 25.0,
     rating: 4.8,
+    quantity: 3,
   },
   {
     id: 3,
@@ -29,6 +31,7 @@ export const products = [
       'Shigatsu wa Kimi no Uso, também conhecido no ocidente como Your Lie in April é uma série de mangá escrita e ilustrada por Naoshi Arakawa',
     price: 67.0,
     rating: 5,
+    quantity: 3,
   },
 
   {
@@ -39,6 +42,7 @@ export const products = [
       'Shigatsu wa Kimi no Uso, também conhecido no ocidente como Your Lie in April é uma série de mangá escrita e ilustrada por Naoshi Arakawa',
     price: 67.0,
     rating: 5,
+    quantity: 3,
   },
   {
     id: 7,
@@ -48,6 +52,7 @@ export const products = [
       'Shigatsu wa Kimi no Uso, também conhecido no ocidente como Your Lie in April é uma série de mangá escrita e ilustrada por Naoshi Arakawa',
     price: 67.0,
     rating: 5,
+    quantity: 3,
   },
   {
     id: 8,
@@ -57,6 +62,7 @@ export const products = [
       'Shigatsu wa Kimi no Uso, também conhecido no ocidente como Your Lie in April é uma série de mangá escrita e ilustrada por Naoshi Arakawa',
     price: 67.0,
     rating: 5,
+    quantity: 3,
   },
   {
     id: 9,
@@ -66,6 +72,7 @@ export const products = [
       'Shigatsu wa Kimi no Uso, também conhecido no ocidente como Your Lie in April é uma série de mangá escrita e ilustrada por Naoshi Arakawa',
     price: 67.0,
     rating: 5,
+    quantity: 3,
   },
   {
     id: 10,
@@ -75,6 +82,7 @@ export const products = [
       'Shigatsu wa Kimi no Uso, também conhecido no ocidente como Your Lie in April é uma série de mangá escrita e ilustrada por Naoshi Arakawa',
     price: 67.0,
     rating: 5,
+    quantity: 3,
   },
   {
     id: 11,
@@ -84,5 +92,6 @@ export const products = [
       'Shigatsu wa Kimi no Uso, também conhecido no ocidente como Your Lie in April é uma série de mangá escrita e ilustrada por Naoshi Arakawa',
     price: 67.0,
     rating: 5,
+    quantity: 3,
   },
 ];
