@@ -17,6 +17,7 @@ import {
   Transitioning,
   TransitioningView,
 } from 'react-native-reanimated';
+import {useNavigation} from '@react-navigation/native';
 
 interface IProductDTO {
   item: {
@@ -43,12 +44,17 @@ const CardProduct = ({item}: Omit<IProductDTO, 'quantity'>) => {
   const [colorAddIcon, setColorAddIcon] = useState('#232323');
   const [currentIdItem, setCurrentIdItem] = useState<number | null>(null);
 
+  const navigation = useNavigation();
+
   const ref = React.useRef<TransitioningView | null>(null);
 
   function HandlePress() {
     console.log('ADICIONAR');
     setColorAddButton('#232323');
     setColorAddIcon('white');
+    navigation.navigate('ProductDetail', {
+      item,
+    });
   }
   return (
     <View
@@ -138,7 +144,7 @@ const CardProduct = ({item}: Omit<IProductDTO, 'quantity'>) => {
               elevation: 5,
             }}
             onPress={HandlePress}>
-            <Icon name="plus" size={25} color={colorAddIcon} />
+            <Icon name="arrow-right" size={25} color={colorAddIcon} />
           </TouchableOpacity>
         </Transitioning.View>
       </TouchableWithoutFeedback>

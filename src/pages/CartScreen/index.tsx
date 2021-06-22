@@ -1,6 +1,5 @@
 import React, {useCallback, useState} from 'react';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
-
 import {
   View,
   Text,
@@ -19,7 +18,6 @@ import {createStyles} from '../../../styles/index';
 import {products} from '../../../constants/products';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import CartItems from '../../components/CartItems';
-
 interface ICartItemsDTO {
   item: {
     id: number;
@@ -45,7 +43,7 @@ const transition = (
 );
 
 const CartScreen = ({navigation}: IHomeProps) => {
-  const [open, setIsOpen] = useState(true);
+  const [open, setIsOpen] = useState(false);
 
   const ref = React.useRef<TransitioningView | null>(null);
 
@@ -105,6 +103,9 @@ const CartScreen = ({navigation}: IHomeProps) => {
           renderItem={renderItem}
           keyExtractor={(item) => String(item.id)}
           contentContainerStyle={{paddingBottom: 20}}
+          initialNumToRender={5}
+          maxToRenderPerBatch={3}
+          windowSize={5}
         />
       </View>
     );

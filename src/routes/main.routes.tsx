@@ -157,14 +157,10 @@ function StackNavigatorRoutes() {
       <NavigationContainer>
         <StatusBar hidden />
 
-        {user ? (
-          <Drawer.Navigator
-            drawerContent={(props) => <DrawerContent {...props} />}>
-            <Drawer.Screen name="HomeDrawer" component={MainStackScreen} />
-          </Drawer.Navigator>
-        ) : (
-          <RootDrawerRoutes />
-        )}
+        <Drawer.Navigator
+          drawerContent={(props) => <DrawerContent {...props} />}>
+          <Drawer.Screen name="HomeDrawer" component={MainStackScreen} />
+        </Drawer.Navigator>
       </NavigationContainer>
     </AuthContext.Provider>
   );

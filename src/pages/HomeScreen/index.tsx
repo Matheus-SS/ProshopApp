@@ -31,7 +31,7 @@ interface IHomeProps {
 }
 
 const HomeScreen = ({navigation}: IHomeProps) => {
-  const layoutWidth = '70%';
+  const layoutWidth = '50%';
 
   const navigateToCart = useCallback(() => {
     navigation.navigate('Cart');
@@ -54,7 +54,12 @@ const HomeScreen = ({navigation}: IHomeProps) => {
             <Icon name="menu" size={20} color="#fff" />
           </TouchableOpacity>
         </View>
-        <View style={{flex: 1, alignItems: 'center'}}>
+        <View
+          style={{
+            flex: 1,
+            alignItems: 'flex-end',
+            paddingRight: 40,
+          }}>
           <TouchableOpacity onPress={navigateToCart}>
             <Icon name="shopping" size={20} color="#ddd" />
           </TouchableOpacity>
@@ -87,6 +92,9 @@ const HomeScreen = ({navigation}: IHomeProps) => {
           renderItem={renderItem}
           keyExtractor={(item) => String(item.id)}
           contentContainerStyle={{paddingBottom: 140}}
+          initialNumToRender={6}
+          maxToRenderPerBatch={3}
+          windowSize={5}
         />
       </View>
     );
