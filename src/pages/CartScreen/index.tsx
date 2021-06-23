@@ -13,7 +13,7 @@ import {
   Transitioning,
   TransitioningView,
 } from 'react-native-reanimated';
-
+import ProtectComponent from '../../components/ProtectComponent';
 import {createStyles} from '../../../styles/index';
 import {products} from '../../../constants/products';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -192,7 +192,7 @@ const CartScreen = ({navigation}: IHomeProps) => {
   }
 
   return (
-    <>
+    <ProtectComponent>
       <View
         style={{
           backgroundColor: '#232323',
@@ -204,7 +204,7 @@ const CartScreen = ({navigation}: IHomeProps) => {
         {ProductList()}
         {ShoppingCartSummary()}
       </View>
-    </>
+    </ProtectComponent>
   );
 };
 

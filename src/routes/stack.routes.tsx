@@ -1,5 +1,5 @@
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
+// import {createStackNavigator} from '@react-navigation/stack';
 import {createSharedElementStackNavigator} from 'react-navigation-shared-element';
 import HomeScreen from '../pages/HomeScreen';
 import SignInScreen from '../pages/SignInScreen';
@@ -22,7 +22,7 @@ const MainStackScreen = () => {
           };
         },
       }}>
-      {/* <Stack.Screen name="SignIn" component={SignInScreen} /> */}
+      <Stack.Screen name="SignIn" component={SignInScreen} />
 
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen
@@ -43,7 +43,7 @@ const MainStackScreen = () => {
         }}
       />
 
-      {/* <Stack.Screen name="Cart" component={CartScreen} /> */}
+      <Stack.Screen name="Cart" component={CartScreen} />
     </Stack.Navigator>
   );
 };

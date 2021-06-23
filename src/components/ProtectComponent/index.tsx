@@ -1,56 +1,35 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useCallback} from 'react';
 
 import {useNavigation} from '@react-navigation/core';
 
 import {AuthContext} from '../Context';
-import {Text, View} from 'react-native';
+import {Text, TouchableOpacity, View} from 'react-native';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {createStyles} from '../../../styles';
 
 const Authentication: React.FC = ({children}) => {
-  const [counter, setCounter] = React.useState(5);
-
-  const navigation = useNavigation();
+  const {reset} = useNavigation();
 
   const {user} = useContext(AuthContext);
 
-  console.log(user);
-  // COUNTER
-  useEffect(() => {
-    let timer: NodeJS.Timeout;
-    if (!user) {
-      timer = setTimeout(() => setCounter(counter - 1), 1000);
-      counter > 0 && timer;
-    }
-    //cleanup
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [counter, user]);
-
-  // AFTER 5 SECONDS GONNA SEND USER TO LOGIN
-  useEffect(() => {
-    let timer: NodeJS.Timeout;
-    if (!user) {
-      timer = setTimeout(() => {
-        navigation.navigate('Home');
-      }, 5600);
-
-      // cleanup function
-      return () => {
-        clearTimeout(timer);
-      };
-    }
-  }, [user, navigation]);
-
+  const handleOkPressed = useCallback(() => {
+    reset({
+      routes: [
+        {
+          name: 'Home',
+        },
+      ],
+      index: 0,
+    });
+  }, [reset]);
   if (!user) {
     return (
       <View
         style={{
           flex: 1,
           justifyContent: 'center',
-          alignItems: 'stretch',
+          alignItems: 'center',
           paddingHorizontal: 20,
           backgroundColor: '#232323',
         }}>
@@ -64,10 +43,13 @@ const Authentication: React.FC = ({children}) => {
         <Text style={styles.title}>
           You need to be Logged in to access this page.
         </Text>
-        <Text style={styles.title}>
-          You gonna be soon redirect to Homescreen
-        </Text>
-        <Text style={styles.title}>Please login or create a new account</Text>
+        <TouchableOpacity onPress={handleOkPressed} style={styles.returnButton}>
+          <Icon name="home" size={30} color="#000" />
+          <Text
+            style={[styles.title, {color: '#000', fontFamily: 'Roboto-Bold'}]}>
+            Return to Homepage
+          </Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -79,6 +61,16 @@ const styles = createStyles({
     fontSize: '1.2rem',
     color: '#fff',
     marginTop: 5,
+    textAlign: 'center',
+  },
+  returnButton: {
+    backgroundColor: '#fff',
+    borderRadius: 8,
+    padding: 10,
+    justifyContent: 'center',
+    alignContent: 'center',
+    marginTop: 30,
+    flexDirection: 'row',
   },
 });
 export default Authentication;
