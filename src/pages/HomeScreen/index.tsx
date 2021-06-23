@@ -13,7 +13,6 @@ import {createStyles} from '../../../styles/index';
 import {products} from '../../../constants/products';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import CardProduct from '../../components/CardProducts';
-
 interface IProductDTO {
   item: {
     id: number;
@@ -91,6 +90,7 @@ const HomeScreen = ({navigation}: IHomeProps) => {
           data={products}
           renderItem={renderItem}
           keyExtractor={(item) => String(item.id)}
+          decelerationRate="fast"
           contentContainerStyle={{paddingBottom: 140}}
           initialNumToRender={6}
           maxToRenderPerBatch={3}

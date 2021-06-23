@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   ImageURISource,
   Image,
+  ScrollView,
 } from 'react-native';
 
 import {createStyles} from '../../../styles/index';
@@ -14,6 +15,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {RouteProp, useRoute} from '@react-navigation/native';
 
 import {AirbnbRating} from 'react-native-ratings';
+import {SharedElement} from 'react-navigation-shared-element';
 
 interface IProductDTO {
   item: {
@@ -70,28 +72,23 @@ const ProductDetailScreen = ({navigation}: IHomeProps) => {
   }
   function ProductImage() {
     return (
-      <View style={{justifyContent: 'center', alignItems: 'center'}}>
+      <View>
         <View
           style={{
-            height: 200,
-            width: 200,
-            shadowColor: '#eee',
-            shadowOffset: {
-              width: 0,
-              height: 3,
-            },
-            elevation: 3,
-            borderRadius: 8,
+            height: 100,
+            width: '100%',
           }}>
-          <Image
-            source={item.image}
-            resizeMode="cover"
-            style={{
-              height: '100%',
-              width: '100%',
-              borderRadius: 8,
-            }}
-          />
+          <SharedElement id={`item.${item.id}.image`}>
+            <Image
+              source={item.image}
+              resizeMode="cover"
+              style={{
+                height: '100%',
+                width: '100%',
+                borderRadius: 8,
+              }}
+            />
+          </SharedElement>
         </View>
       </View>
     );
@@ -100,7 +97,9 @@ const ProductDetailScreen = ({navigation}: IHomeProps) => {
   function Title() {
     return (
       <View style={{marginTop: 20}}>
-        <Text style={styles.title}>{item.title}</Text>
+        <SharedElement id={`item.${item.id}.title`}>
+          <Text style={styles.title}>{item.title}</Text>
+        </SharedElement>
       </View>
     );
   }
@@ -134,7 +133,6 @@ const ProductDetailScreen = ({navigation}: IHomeProps) => {
           backgroundColor: '#eee',
           borderRadius: 8,
           padding: 8,
-          elevation: 5,
           marginTop: 20,
 
           alignItems: 'center',
@@ -179,7 +177,6 @@ const ProductDetailScreen = ({navigation}: IHomeProps) => {
           backgroundColor: '#eee',
           borderRadius: 8,
           padding: 20,
-          elevation: 5,
           marginTop: 20,
 
           paddingHorizontal: 20,
@@ -201,14 +198,14 @@ const ProductDetailScreen = ({navigation}: IHomeProps) => {
     );
   }
   return (
-    <>
-      <View
-        style={{
-          flex: 1,
-          backgroundColor: '#232323',
-          paddingTop: 30,
-          paddingHorizontal: 20,
-        }}>
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: '#232323',
+        paddingTop: 30,
+        paddingHorizontal: 20,
+      }}>
+      <ScrollView style={{flex: 1}}>
         {Header()}
         {ProductImage()}
         {Title()}
@@ -216,8 +213,8 @@ const ProductDetailScreen = ({navigation}: IHomeProps) => {
         {Rating()}
         {PlusAndMinusButton()}
         {AddItemToCart()}
-      </View>
-    </>
+      </ScrollView>
+    </View>
   );
 };
 

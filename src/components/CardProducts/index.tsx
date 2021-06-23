@@ -18,6 +18,7 @@ import {
   TransitioningView,
 } from 'react-native-reanimated';
 import {useNavigation} from '@react-navigation/native';
+import {SharedElement} from 'react-navigation-shared-element';
 
 interface IProductDTO {
   item: {
@@ -92,29 +93,28 @@ const CardProduct = ({item}: Omit<IProductDTO, 'quantity'>) => {
               flex: 1,
               right: 25,
               height: 70,
-              shadowColor: '#000',
-              shadowOffset: {
-                width: 0,
-                height: 6,
-              },
-              elevation: 10,
+
               borderRadius: 20,
             }}>
-            <Image
-              source={item.image}
-              resizeMode="cover"
-              style={{
-                height: '100%',
-                width: '100%',
-                borderRadius: 20,
-              }}
-            />
+            <SharedElement id={`item.${item.id}.image`}>
+              <Image
+                source={item.image}
+                resizeMode="cover"
+                style={{
+                  height: '100%',
+                  width: '100%',
+                  borderRadius: 20,
+                }}
+              />
+            </SharedElement>
           </View>
 
           <View style={{flex: 3}}>
-            <Text style={styles.titleCard} numberOfLines={1}>
-              {item.title}
-            </Text>
+            <SharedElement id={`item.${item.id}.title`}>
+              <Text style={styles.titleCard} numberOfLines={1}>
+                {item.title}
+              </Text>
+            </SharedElement>
             {item.id === currentIdItem && (
               <View>
                 <Text>{item.description}</Text>
