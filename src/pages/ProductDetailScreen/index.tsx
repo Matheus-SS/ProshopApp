@@ -41,6 +41,7 @@ type ProductDetailScreenRouteProp = RouteProp<ParamList, 'ProductDetail'>;
 const ProductDetailScreen = ({navigation}: IHomeProps) => {
   const {item} = useRoute<ProductDetailScreenRouteProp>().params;
 
+  const tre = 'te';
   const navigateToCart = useCallback(() => {
     navigation.navigate('Cart');
   }, [navigation]);
