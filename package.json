@@ -8,11 +8,11 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "prettier": "prettier --config .prettierrc 'src/**/*.ts|*.tsx' --write" 
+    "prettier": "prettier --write ."
   },
-  "husky":{
-    "hooks":{
-      "pre-commit": "npm run prettier && npm run lint"
+  "husky": {
+    "hooks": {
+      "pre-commit": "prettier --write . && eslint . --ext .js,.jsx,.ts,.tsx --fix"
     }
   },
   "dependencies": {
