@@ -25,8 +25,8 @@ const SignInScreen = () => {
 
   const {signIn} = React.useContext(AuthContext);
 
-  const handleSubmit = (username: string, passWord: string) => {
-    signIn(username, passWord);
+  const handleSubmit = async (username: string, passWord: string) => {
+    await signIn(username, passWord);
   };
   function title() {
     return (

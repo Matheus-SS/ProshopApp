@@ -10,23 +10,21 @@ const Stack = createSharedElementStackNavigator();
 
 const MainStackScreen = () => {
   return (
-    <Stack.Navigator
-      initialRouteName="Home"
-      headerMode="none"
-      screenOptions={{
-        cardStyleInterpolator: ({current: {progress}}) => {
-          return {
-            cardStyle: {
-              opacity: progress,
-            },
-          };
-        },
-      }}>
+    <Stack.Navigator initialRouteName="Home" headerMode="none">
       <Stack.Screen name="SignIn" component={SignInScreen} />
 
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen
         name="ProductDetail"
+        options={{
+          cardStyleInterpolator: ({current: {progress}}) => {
+            return {
+              cardStyle: {
+                opacity: progress,
+              },
+            };
+          },
+        }}
         component={ProductDetailScreen}
         sharedElementsConfig={(route) => {
           const {item} = route.params;

@@ -13,11 +13,12 @@ import {
   Transitioning,
   TransitioningView,
 } from 'react-native-reanimated';
-import ProtectComponent from '../../components/ProtectComponent';
+
 import {createStyles} from '../../../styles/index';
 import {products} from '../../../constants/products';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import CartItems from '../../components/CartItems';
+import Authentication from '../../components/ProtectComponent';
 interface ICartItemsDTO {
   item: {
     id: number;
@@ -192,7 +193,7 @@ const CartScreen = ({navigation}: IHomeProps) => {
   }
 
   return (
-    <ProtectComponent>
+    <Authentication>
       <View
         style={{
           backgroundColor: '#232323',
@@ -204,7 +205,7 @@ const CartScreen = ({navigation}: IHomeProps) => {
         {ProductList()}
         {ShoppingCartSummary()}
       </View>
-    </ProtectComponent>
+    </Authentication>
   );
 };
 

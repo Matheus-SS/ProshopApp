@@ -34,7 +34,6 @@ const Drawer = createDrawerNavigator();
 function StackNavigatorRoutes() {
   // const [isLoading, setIsLoading] = React.useState(true);
   const [user, setUser] = React.useState<string | null>(null);
-
   const initialLoginState: InitalStateType = {
     isLoading: true,
     userName: null,
@@ -157,10 +156,14 @@ function StackNavigatorRoutes() {
       <NavigationContainer>
         <StatusBar hidden />
 
-        <Drawer.Navigator
-          drawerContent={(props) => <DrawerContent {...props} />}>
-          <Drawer.Screen name="HomeDrawer" component={MainStackScreen} />
-        </Drawer.Navigator>
+        {user ? (
+          <Drawer.Navigator
+            drawerContent={(props) => <DrawerContent {...props} />}>
+            <Drawer.Screen name="HomeDrawer" component={MainStackScreen} />
+          </Drawer.Navigator>
+        ) : (
+          <RootDrawerRoutes />
+        )}
       </NavigationContainer>
     </AuthContext.Provider>
   );
