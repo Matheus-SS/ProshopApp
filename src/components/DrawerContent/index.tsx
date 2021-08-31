@@ -18,6 +18,7 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
     signOut();
     props.navigation.navigate('Home');
   }, [props.navigation, signOut]);
+
   return (
     <View style={{flex: 1, backgroundColor: '#232323'}}>
       <DrawerContentScrollView {...props}>
