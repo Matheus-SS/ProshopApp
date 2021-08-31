@@ -8,7 +8,6 @@ import {
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {createStyles} from '../../../styles';
 import {AuthContext} from '../Context';
-
 const DrawerContent = (props: DrawerContentComponentProps) => {
   const {signOut, user} = useContext(AuthContext);
 
