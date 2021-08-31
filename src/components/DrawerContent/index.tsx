@@ -6,7 +6,9 @@ import {
   DrawerContentComponentProps,
 } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
 import {createStyles} from '../../../styles';
+
 import {AuthContext} from '../Context';
 
 const DrawerContent = (props: DrawerContentComponentProps) => {
@@ -16,6 +18,7 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
     signOut();
     props.navigation.navigate('Home');
   }, [props.navigation, signOut]);
+
   return (
     <View style={{flex: 1, backgroundColor: '#232323'}}>
       <DrawerContentScrollView {...props}>
