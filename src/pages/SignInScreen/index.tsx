@@ -8,8 +8,9 @@ import {
   Platform,
   ScrollView,
 } from 'react-native';
-// import {useNavigation} from '@react-navigation/core';
+import {useNavigation} from '@react-navigation/core';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
 import {createStyles} from '../../../styles';
 
 import {AuthContext} from '../../components/Context';
@@ -20,7 +21,7 @@ const SignInScreen = () => {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
 
-  //const navigation = useNavigation();
+  const navigation = useNavigation();
   const passowordRef = useRef<TextInput>(null);
 
   const {signIn} = React.useContext(AuthContext);
@@ -111,7 +112,7 @@ const SignInScreen = () => {
             flex: 1,
           }}
           onPress={() => handleSubmit(userName, password)}>
-          <Text style={styles.buttonText}>Login</Text>
+          <Text style={styles.buttonText}>Sign in</Text>
         </TouchableOpacity>
       </View>
     );
@@ -119,13 +120,24 @@ const SignInScreen = () => {
 
   function renderResetPasswordButton() {
     return (
-      <View style={{marginTop: 20, flexDirection: 'row', width: '100%'}}>
+      <View>
         <TouchableOpacity onPress={() => console.log('l')}>
           <Text style={styles.resetPasswordButtonText}>Forgot password?</Text>
         </TouchableOpacity>
       </View>
     );
   }
+
+  function renderHomeButton() {
+    return (
+      <View>
+        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+          <Text style={styles.goBackButtonText}>Go Home</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+
   return (
     <KeyboardAvoidingView
       style={{flex: 1}}
@@ -144,7 +156,10 @@ const SignInScreen = () => {
           {title()}
           {renderForm()}
           {renderButton()}
-          {renderResetPasswordButton()}
+          <View style={styles.containerSecondaryButtons}>
+            {renderHomeButton()}
+            {renderResetPasswordButton()}
+          </View>
         </ScrollView>
       </View>
     </KeyboardAvoidingView>
@@ -166,8 +181,20 @@ const styles = createStyles({
     fontSize: '1rem',
     fontFamily: 'Roboto-Regular',
     color: '#ccc',
-    paddingLeft: 20,
-    textAlign: 'left',
+  },
+
+  goBackButtonText: {
+    fontSize: '1rem',
+    fontFamily: 'Roboto-Regular',
+    color: '#ccc',
+  },
+
+  containerSecondaryButtons: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+    paddingHorizontal: 20,
+    marginTop: 20,
   },
 });
 
