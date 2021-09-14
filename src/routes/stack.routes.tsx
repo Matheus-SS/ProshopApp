@@ -3,6 +3,7 @@ import React from 'react';
 import {createSharedElementStackNavigator} from 'react-navigation-shared-element';
 import HomeScreen from '../pages/HomeScreen';
 import SignInScreen from '../pages/SignInScreen';
+import SignUpScreen from '../pages/SignUpScreen';
 import CartScreen from '../pages/CartScreen';
 import ProductDetailScreen from '../pages/ProductDetailScreen';
 
@@ -12,6 +13,7 @@ const MainStackScreen = () => {
   return (
     <Stack.Navigator initialRouteName="Home" headerMode="none">
       <Stack.Screen name="SignIn" component={SignInScreen} />
+      <Stack.Screen name="SignUp" component={SignUpScreen} />
 
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen
