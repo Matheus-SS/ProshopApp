@@ -98,7 +98,7 @@ const SignInScreen = () => {
     );
   }
 
-  function renderButton() {
+  function renderSignInButton() {
     return (
       <View style={{marginTop: 30, flexDirection: 'row'}}>
         <TouchableOpacity
@@ -113,6 +113,26 @@ const SignInScreen = () => {
           }}
           onPress={() => handleSubmit(userName, password)}>
           <Text style={styles.buttonText}>Sign in</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+
+  function renderSignUpButton() {
+    return (
+      <View style={{marginTop: 10, flexDirection: 'row'}}>
+        <TouchableOpacity
+          style={{
+            backgroundColor: '#fff',
+            padding: 10,
+            marginHorizontal: 20,
+            borderRadius: 10,
+            justifyContent: 'center',
+            alignItems: 'center',
+            flex: 1,
+          }}
+          onPress={() => navigation.navigate('SignUp')}>
+          <Text style={styles.buttonText}>Create account</Text>
         </TouchableOpacity>
       </View>
     );
@@ -155,7 +175,8 @@ const SignInScreen = () => {
           }}>
           {title()}
           {renderForm()}
-          {renderButton()}
+          {renderSignInButton()}
+          {renderSignUpButton()}
           <View style={styles.containerSecondaryButtons}>
             {renderHomeButton()}
             {renderResetPasswordButton()}
