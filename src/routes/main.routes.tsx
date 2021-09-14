@@ -113,10 +113,10 @@ function StackNavigatorRoutes() {
         }
         dispatch({type: 'LOGOUT'});
       },
-      signUp: () => {
-        // setUserToken('TOKEN');
-        // setIsLoading(false);
+      signUp: async (email: string, username: string, password: string) => {
+        console.log(email, username, password);
       },
+
       user: user,
     }),
     [user],
