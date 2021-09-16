@@ -9,10 +9,10 @@ import {
   ImageURISource,
 } from 'react-native';
 
-import {createStyles} from '@styles/index';
+import {createStyles} from 'Styles/index';
 import {products} from '../../../constants/products';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import CardProduct from '@components/CardProducts';
+import CardProduct from 'Components/CardProducts';
 interface IProductDTO {
   item: {
     id: number;

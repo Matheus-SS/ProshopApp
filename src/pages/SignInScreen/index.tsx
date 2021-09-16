@@ -11,9 +11,9 @@ import {
 import {useNavigation} from '@react-navigation/core';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import {createStyles} from '@styles/index';
+import {createStyles} from 'Styles/index';
 
-import {AuthContext} from '@components/Context';
+import {AuthContext} from 'Components/Context';
 
 const SignInScreen = () => {
   const [showPassword, setShowPassword] = useState<boolean>(true);
@@ -141,7 +141,7 @@ const SignInScreen = () => {
   function renderResetPasswordButton() {
     return (
       <View>
-        <TouchableOpacity onPress={() => console.log('l')}>
+        <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')}>
           <Text style={styles.resetPasswordButtonText}>Forgot password?</Text>
         </TouchableOpacity>
       </View>

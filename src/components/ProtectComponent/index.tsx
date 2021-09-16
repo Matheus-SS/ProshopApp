@@ -2,11 +2,11 @@ import React, {useContext, useCallback} from 'react';
 
 import {useNavigation} from '@react-navigation/core';
 
-import {AuthContext} from '@components/Context';
+import {AuthContext} from 'Components/Context';
 import {Text, TouchableOpacity, View} from 'react-native';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {createStyles} from '@styles/index';
+import {createStyles} from 'Styles/index';
 
 const Authentication: React.FC = ({children}) => {
   const {reset} = useNavigation();

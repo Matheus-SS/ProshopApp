@@ -10,7 +10,7 @@ import {
   ScrollView,
 } from 'react-native';
 
-import {createStyles} from '@styles/index';
+import {createStyles} from 'Styles/index';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {RouteProp, useRoute} from '@react-navigation/native';
 

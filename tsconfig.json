@@ -2,14 +2,14 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "commonjs",
-    "lib": ["es2017"],
-    "baseUrl": "src",
+    "lib": ["ES2017"],
+    "baseUrl": ".",
     "paths": {
-      "@components/*": ["components/*"],
-      "@assets/*": ["assets/*"],
-      "@routes/*": ["routes/*"],
-      "@pages/*": ["pages/*"],
-      "@styles/*": ["styles/*"]
+      "Components/*": ["src/components/*"],
+      "Assets/*": ["src/assets/*"],
+      "Routes/*": ["src/routes/*"],
+      "Pages/*": ["src/pages/*"],
+      "Styles/*": ["src/styles/*"]
     },
     "allowJs": true,
     "jsx": "react-native",
@@ -21,6 +21,7 @@
     "esModuleInterop": true,
     "skipLibCheck": false
   },
+  "include": ["src"],
   "exclude": [
     "node_modules",
     "babel.config.js",
