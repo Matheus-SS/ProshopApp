@@ -11,9 +11,9 @@ import {
 import {useNavigation} from '@react-navigation/core';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import {createStyles} from '../../../styles';
+import {createStyles} from '@styles/index';
 
-import {AuthContext} from '../../components/Context';
+import {AuthContext} from '@components/Context';
 
 const SignInScreen = () => {
   const [showPassword, setShowPassword] = useState<boolean>(true);
