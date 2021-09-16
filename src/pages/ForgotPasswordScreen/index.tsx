@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useState} from 'react';
 import {
   Text,
   View,
@@ -9,36 +9,20 @@ import {
   ScrollView,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/core';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import {createStyles} from 'Styles/index';
 
-import {AuthContext} from 'Components/Context';
-
-const SignUpScreen = () => {
-  const [showPassword, setShowPassword] = useState<boolean>(true);
-
-  const [userName, setUserName] = useState('');
+const ForgotPasswordScreen = () => {
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
   const navigation = useNavigation();
-  const nameRef = useRef<TextInput>(null);
-  const passowordRef = useRef<TextInput>(null);
 
-  const {signUp} = React.useContext(AuthContext);
-
-  const handleSubmit = async (
-    email: string,
-    username: string,
-    passWord: string,
-  ) => {
-    await signUp(email, username, passWord);
+  const handleSubmit = async (email: string) => {
+    console.log(email);
   };
   function title() {
     return (
       <View>
-        <Text style={styles.title}>Create your account</Text>
+        <Text style={styles.title}>Forgot my password</Text>
       </View>
     );
   }
@@ -57,68 +41,13 @@ const SignUpScreen = () => {
               color: '#fff',
             }}
             onChangeText={(value) => setEmail(value)}
-            returnKeyType="next"
-            onSubmitEditing={() => nameRef.current?.focus()}
+            returnKeyType="send"
+            onSubmitEditing={() => handleSubmit(email)}
             autoCapitalize="none"
             placeholder="Email"
             textContentType="emailAddress"
             placeholderTextColor="#fff"
           />
-        </View>
-
-        {/* VIEW NAME */}
-        <View style={{marginTop: 20}}>
-          <TextInput
-            ref={nameRef}
-            style={{
-              borderBottomColor: '#fff',
-              borderBottomWidth: 1,
-              height: 40,
-              color: '#fff',
-            }}
-            onChangeText={(value) => setUserName(value)}
-            returnKeyType="next"
-            onSubmitEditing={() => passowordRef.current?.focus()}
-            autoCapitalize="none"
-            placeholder="Name"
-            textContentType="name"
-            placeholderTextColor="#fff"
-          />
-        </View>
-
-        {/* VIEW PASSWORD */}
-        <View style={{marginTop: 20}}>
-          <TextInput
-            style={{
-              borderBottomColor: '#fff',
-              borderBottomWidth: 1,
-              height: 40,
-              color: '#fff',
-            }}
-            ref={passowordRef}
-            returnKeyType="send"
-            autoCapitalize="none"
-            placeholder="Password"
-            textContentType="password"
-            onChangeText={(value) => setPassword(value)}
-            placeholderTextColor="#fff"
-            secureTextEntry={showPassword}
-            onSubmitEditing={() => handleSubmit(email, userName, password)}
-          />
-
-          <TouchableOpacity
-            style={{
-              position: 'absolute',
-              right: 0,
-              top: 10,
-            }}
-            onPress={() => setShowPassword(!showPassword)}>
-            <Icon
-              name={`${showPassword ? 'eye' : 'eye-off'}`}
-              color="#fff"
-              size={20}
-            />
-          </TouchableOpacity>
         </View>
       </View>
     );
@@ -137,8 +66,8 @@ const SignUpScreen = () => {
             alignItems: 'center',
             flex: 1,
           }}
-          onPress={() => handleSubmit(email, userName, password)}>
-          <Text style={styles.buttonText}>Sign up</Text>
+          onPress={() => handleSubmit(email)}>
+          <Text style={styles.buttonText}>Send email</Text>
         </TouchableOpacity>
       </View>
     );
@@ -213,4 +142,4 @@ const styles = createStyles({
   },
 });
 
-export default SignUpScreen;
+export default ForgotPasswordScreen;

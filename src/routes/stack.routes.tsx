@@ -1,17 +1,19 @@
 import React from 'react';
 // import {createStackNavigator} from '@react-navigation/stack';
 import {createSharedElementStackNavigator} from 'react-navigation-shared-element';
-import HomeScreen from '../pages/HomeScreen';
-import SignInScreen from '../pages/SignInScreen';
-import SignUpScreen from '../pages/SignUpScreen';
-import CartScreen from '../pages/CartScreen';
-import ProductDetailScreen from '../pages/ProductDetailScreen';
+import HomeScreen from 'Pages/HomeScreen';
+import SignInScreen from 'Pages/SignInScreen';
+import SignUpScreen from 'Pages/SignUpScreen';
+import CartScreen from 'Pages/CartScreen';
+import ProductDetailScreen from 'Pages/ProductDetailScreen';
+import ForgotPasswordScreen from 'Pages/ForgotPasswordScreen';
 
 const Stack = createSharedElementStackNavigator();
 
 const MainStackScreen = () => {
   return (
     <Stack.Navigator initialRouteName="Home" headerMode="none">
+      <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
       <Stack.Screen name="SignIn" component={SignInScreen} />
       <Stack.Screen name="SignUp" component={SignUpScreen} />
 

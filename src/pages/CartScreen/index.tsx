@@ -14,11 +14,11 @@ import {
   TransitioningView,
 } from 'react-native-reanimated';
 
-import {createStyles} from '@styles/index';
+import {createStyles} from 'Styles/index';
 import {products} from '../../../constants/products';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import CartItems from '@components/CartItems';
-import Authentication from '@components/ProtectComponent';
+import CartItems from 'Components/CartItems';
+import Authentication from 'Components/ProtectComponent';
 interface ICartItemsDTO {
   item: {
     id: number;
