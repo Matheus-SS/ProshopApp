@@ -7,9 +7,9 @@ import {
 } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import {createStyles} from '../../../styles';
+import {createStyles} from '@styles/index';
 
-import {AuthContext} from '../Context';
+import {AuthContext} from '@components/Context';
 
 const DrawerContent = (props: DrawerContentComponentProps) => {
   const {signOut, user} = useContext(AuthContext);

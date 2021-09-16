@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 
 import {AirbnbRating} from 'react-native-ratings';
-import {createStyles} from '../../../styles/index';
+import {createStyles} from '@styles/index';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {
