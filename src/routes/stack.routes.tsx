@@ -7,6 +7,7 @@ import SignUpScreen from 'Pages/SignUpScreen';
 import CartScreen from 'Pages/CartScreen';
 import ProductDetailScreen from 'Pages/ProductDetailScreen';
 import ForgotPasswordScreen from 'Pages/ForgotPasswordScreen';
+import ShippingAddressScreen from 'Pages/ShippingAddressScreen';
 
 const Stack = createSharedElementStackNavigator();
 
@@ -18,6 +19,7 @@ const MainStackScreen = () => {
       <Stack.Screen name="SignUp" component={SignUpScreen} />
 
       <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="ShippingAddress" component={ShippingAddressScreen} />
       <Stack.Screen
         name="ProductDetail"
         options={{
