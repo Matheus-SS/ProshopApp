@@ -78,7 +78,7 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
                 icon={() => <Icon name="map-marker" size={20} color="#fff" />}
                 label="Address"
                 labelStyle={{color: '#fff'}}
-                onPress={() => console.log('ADDRESS')}
+                onPress={() => props.navigation.navigate('ShippingAddress')}
               />
             )}
 
