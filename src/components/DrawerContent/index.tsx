@@ -69,7 +69,7 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
                 icon={() => <Icon name="account" size={20} color="#fff" />}
                 label="Profile"
                 labelStyle={{color: '#fff'}}
-                onPress={() => console.log('PROFILE')}
+                onPress={() => props.navigation.navigate('Profile')}
               />
             )}
 
@@ -77,6 +77,21 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
               <DrawerItem
                 icon={() => <Icon name="map-marker" size={20} color="#fff" />}
                 label="Address"
+                labelStyle={{color: '#fff'}}
+                onPress={() => props.navigation.navigate('ShippingAddress')}
+              />
+            )}
+
+            {user && (
+              <DrawerItem
+                icon={() => (
+                  <Icon
+                    name="file-document-edit-outline"
+                    size={20}
+                    color="#fff"
+                  />
+                )}
+                label="My orders"
                 labelStyle={{color: '#fff'}}
                 onPress={() => props.navigation.navigate('ShippingAddress')}
               />

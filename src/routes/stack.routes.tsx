@@ -1,13 +1,15 @@
 import React from 'react';
 // import {createStackNavigator} from '@react-navigation/stack';
 import {createSharedElementStackNavigator} from 'react-navigation-shared-element';
-import HomeScreen from 'Pages/HomeScreen';
 import SignInScreen from 'Pages/SignInScreen';
 import SignUpScreen from 'Pages/SignUpScreen';
-import CartScreen from 'Pages/CartScreen';
-import ProductDetailScreen from 'Pages/ProductDetailScreen';
 import ForgotPasswordScreen from 'Pages/ForgotPasswordScreen';
+
+import HomeScreen from 'Pages/HomeScreen';
+import ProfileScreen from 'Pages/ProfileScreen';
+import CartScreen from 'Pages/CartScreen';
 import ShippingAddressScreen from 'Pages/ShippingAddressScreen';
+import ProductDetailScreen from 'Pages/ProductDetailScreen';
 
 const Stack = createSharedElementStackNavigator();
 
@@ -20,6 +22,7 @@ const MainStackScreen = () => {
 
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="ShippingAddress" component={ShippingAddressScreen} />
+      <Stack.Screen name="Profile" component={ProfileScreen} />
       <Stack.Screen
         name="ProductDetail"
         options={{
